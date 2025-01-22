@@ -1,0 +1,19 @@
+# Node modules (Ignore dependencies)
+frontend/node_modules/
+backend/node_modules/
+
+# Build & Dist Folders
+frontend/dist/
+backend/dist/
+
+# Environment Files (Don't push secrets!)
+frontend/.env
+backend/.env
+
+# IDE & Editor Files
+.vscode/
+.idea/
+.DS_Store
+
+# Log Files
+*.log

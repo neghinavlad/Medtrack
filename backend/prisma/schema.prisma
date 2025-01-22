@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id       Int    @id @default(autoincrement())
+  username String @db.VarChar(255)
+  password String @db.VarChar(255)
+  email    String @db.VarChar(255)
+  type USER_TYPE 
+}
+
+enum USER_TYPE {
+  ADMIN
+  DOCTOR
+  STAFF
+}
+
+model patient {
+  id             Int      @id @default(autoincrement())
+  lastName       String   @db.VarChar(255)
+  firstName      String   @db.VarChar(255)
+  age           Int      @db.Int
+  condition      CONDITION
+  date_of_arrival DateTime  @default(now())  // Stores the date and time of arrival
+  medical_record String   @db.Text          // Stores a long text for medical history
+}
+
+enum CONDITION {
+  LIGHT
+  MEDIUM
+  BAD
+  CRITICAL
+}
+
