@@ -1,0 +1,19 @@
+@if (isLoading){
+  <div>Loading doctors...</div>
+}
+
+@if (!isLoading && doctors.length > 0){
+  <div>
+    <h2>Doctors List</h2>
+    <ul>
+      @for (doctor of doctors; track $index){
+        <li><strong>{{ doctor.name }} {{ doctor.specialization }}</strong></li>
+      }
+    </ul>
+  </div>
+}
+
+@if(!isLoading && doctors.length === 0){
+  <p>No doctors found.</p>
+}
+

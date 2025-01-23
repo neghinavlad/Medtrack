@@ -1,0 +1,46 @@
+<div class="d-grid grid-cols-2">
+  <div>
+    <a [routerLink]="['patients']">View patients</a>
+    <a [routerLink]="['doctors']">View doctors</a>
+  </div>
+  <div>
+    <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+      <label>First Name:</label>
+      <input formControlName="firstName" type="text">
+      <div *ngIf="patientForm.get('firstName')?.invalid && patientForm.get('firstName')?.touched">
+        First name is required (min 2 characters).
+      </div>
+
+      <label>Last Name:</label>
+      <input formControlName="lastName" type="text">
+      <div *ngIf="patientForm.get('lastName')?.invalid && patientForm.get('lastName')?.touched">
+        Last name is required (min 2 characters).
+      </div>
+
+      <label>Age:</label>
+      <input formControlName="age" type="number">
+      <div *ngIf="patientForm.get('age')?.invalid && patientForm.get('age')?.touched">
+        Age must be between 0 and 120.
+      </div>
+
+      <label>Condition:</label>
+      <select formControlName="condition">
+        <option value="">Select Condition</option>
+        <option value="LIGHT">Light</option>
+        <option value="MEDIUM">Medium</option>
+        <option value="BAD">Bad</option>
+        <option value="CRITICAL">Critical</option>
+      </select>
+
+      <label>Medical Record:</label>
+      <textarea formControlName="medical_record"></textarea>
+      <div *ngIf="patientForm.get('medical_record')?.invalid && patientForm.get('medical_record')?.touched">
+        Medical record must be at least 10 characters long.
+      </div>
+
+      <button type="submit" [disabled]="patientForm.invalid">Create Patient</button>
+    </form>
+
+  </div>
+</div>
+

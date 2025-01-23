@@ -12,7 +12,7 @@ model users {
   username String @db.VarChar(255)
   password String @db.VarChar(255)
   email    String @db.VarChar(255)
-  type USER_TYPE 
+  type     USER_TYPE 
 }
 
 enum USER_TYPE {
@@ -22,13 +22,18 @@ enum USER_TYPE {
 }
 
 model patient {
-  id             Int      @id @default(autoincrement())
-  lastName       String   @db.VarChar(255)
-  firstName      String   @db.VarChar(255)
-  age           Int      @db.Int
-  condition      CONDITION
-  date_of_arrival DateTime  @default(now())  // Stores the date and time of arrival
-  medical_record String   @db.Text          // Stores a long text for medical history
+  id              Int      @id @default(autoincrement())
+  lastName        String   @db.VarChar(255)
+  firstName       String   @db.VarChar(255)
+  age             Int      @db.Int
+  condition       CONDITION
+  date_of_arrival DateTime @default(now())  // Stores the date and time of arrival
+  medical_record  String   @db.Text         // Stores a long text for medical history
+
+  isAssigned      Boolean  @default(false)  
+
+
+  assignedDoctorId Int?    
 }
 
 enum CONDITION {
@@ -38,3 +43,8 @@ enum CONDITION {
   CRITICAL
 }
 
+model Doctor {
+  id               Int       @id @default(autoincrement())
+  name             String    @db.VarChar(255)
+  specialization   String    @db.VarChar(255)
+}

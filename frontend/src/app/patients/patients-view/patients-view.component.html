@@ -1,0 +1,19 @@
+@if (isLoading){
+  <div>Loading patients...</div>
+}
+
+@if (!isLoading && patients.length > 0){
+  <div>
+    <h2>Patients List</h2>
+    <ul>
+      @for (patient of patients; track $index){
+        <li><strong>{{ patient.firstName }} {{ patient.lastName }}</strong> - Age: {{ patient.age }} - Condition: {{ patient.condition }}</li>
+      }
+    </ul>
+  </div>
+}
+
+@if(!isLoading && patients.length === 0){
+  <p>No patients found.</p>
+}
+
