@@ -1,0 +1,22 @@
+<div class="ml-50 mr-50">
+  @if (doctor){
+    <h2>{{doctor.name}}</h2>
+    <h3>Specialization: {{doctor.specialization}}</h3>
+  }
+  <div class="card">
+    <p-pick-list
+      [source]="unassignedPatients"
+      [target]="assignedPatients"
+      sourceHeader="Unassigned Patients"
+      targetHeader="Assigned Patients"
+      [dragdrop]="true"
+      (onMoveToTarget)="assignPatients($event)"
+      (onMoveToSource)="unassignPatients($event)"
+      responsiveLayout="scroll"
+    >
+      <ng-template let-item #item>
+        {{ item.lastName }} {{item.firstName}} - {{item.medical_record}}
+      </ng-template>
+    </p-pick-list>
+  </div>
+</div>

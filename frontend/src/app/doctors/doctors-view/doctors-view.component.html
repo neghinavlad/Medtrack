@@ -1,19 +1,23 @@
-@if (isLoading){
-  <div>Loading doctors...</div>
-}
-
-@if (!isLoading && doctors.length > 0){
-  <div>
-    <h2>Doctors List</h2>
-    <ul>
-      @for (doctor of doctors; track $index){
-        <li><strong>{{ doctor.name }} {{ doctor.specialization }}</strong></li>
-      }
-    </ul>
-  </div>
-}
-
-@if(!isLoading && doctors.length === 0){
-  <p>No doctors found.</p>
-}
-
+<div class="ml-50 mr-50">
+  <p-table [value]="doctors" stripedRows [tableStyle]="{'min-width': '50rem'}">
+    <ng-template #header>
+      <tr>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Details</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-doctor>
+      <tr>
+        <td>{{doctor.name}}</td>
+        <td>{{doctor.specialization}}</td>
+        <td>
+          <i
+            class="pi pi-arrow-up-right-and-arrow-down-left-from-center clickable"
+            (click)="navigateToDoctor(doctor.id)"
+          ></i>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

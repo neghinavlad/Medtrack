@@ -42,6 +42,15 @@ export class PatientsViewComponent implements OnInit {
     }
   }
 
+  isAssigned(status: boolean){
+    switch (status){
+      case false:
+          return 'danger';
+      case true:
+          return 'success';
+    }
+  }
+
   fetchPatients(): void {
     this.patientsService.getPatients()
       .pipe(takeUntilDestroyed(this.destroyRef))

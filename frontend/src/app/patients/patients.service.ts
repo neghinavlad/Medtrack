@@ -27,7 +27,7 @@ export class PatientsService {
   }
 
   updatePatient(id: number, PatientData: FormData): Observable<Patient> {
-    return this.http.put<Patient>(EndpointList.patients(id), PatientData);
+    return this.http.patch<Patient>(EndpointList.patients(id), PatientData);
   }
 
   deletePatient(id: number): Observable<any> {
