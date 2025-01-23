@@ -5,6 +5,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { PatientsService } from '../patients/patients.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {NgIf} from '@angular/common';
+import {InputText} from 'primeng/inputtext';
+import {InputNumber} from 'primeng/inputnumber';
+import {Select} from 'primeng/select';
+import {DropdownModule} from 'primeng/dropdown';
+import {SelectButton} from 'primeng/selectbutton';
+import {Textarea} from 'primeng/textarea';
+import {WindowMaximizeIcon} from 'primeng/icons';
+import {Button, ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,13 +21,30 @@ import {NgIf} from '@angular/common';
   imports: [
     RouterLink,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    InputText,
+    InputNumber,
+    Select,
+    DropdownModule,
+    SelectButton,
+    Textarea,
+    WindowMaximizeIcon,
+    ButtonLabel,
+    ButtonIcon,
+    ButtonDirective,
+    Button
   ],
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
   newPatient: Patient;
   patientForm!: FormGroup;
+  conditions: any[] = [
+    { label: 'Light', value: 'LIGHT' },
+    { label: 'Medium', value: 'MEDIUM' },
+    { label: 'Bad', value: 'BAD' },
+    { label: 'Critical', value: 'CRITICAL' }
+  ];
 
   private destroyRef = inject(DestroyRef);
 
@@ -29,6 +54,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.initFormPatient();
+    console.log(this.conditions);
   }
 
   private initFormPatient(): void {

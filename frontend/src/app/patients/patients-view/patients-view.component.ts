@@ -3,13 +3,15 @@ import {Patient} from '../patients.model';
 import {PatientsService} from '../patients.service';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TableModule} from 'primeng/table';
+import {Tag} from 'primeng/tag';
 
 @Component({
   selector: 'app-patients-view',
   standalone: true,
   templateUrl: './patients-view.component.html',
   imports: [
-    TableModule
+    TableModule,
+    Tag
   ],
   styleUrl: './patients-view.component.scss'
 })
@@ -23,6 +25,21 @@ export class PatientsViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchPatients();
+  }
+
+  getSeverity(status: string) {
+    switch (status) {
+      case 'LIGHT':
+        return 'info';
+      case 'MEDIUM':
+        return 'warn';
+      case 'BAD':
+        return 'danger';
+      case 'CRITICAL':
+        return 'contrast';
+      default:
+        return 'success'; // Handle unexpected values
+    }
   }
 
   fetchPatients(): void {
