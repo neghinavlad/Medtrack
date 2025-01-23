@@ -2,11 +2,15 @@ import {Component, DestroyRef, inject, OnInit} from '@angular/core';
 import {Patient} from '../patients.model';
 import {PatientsService} from '../patients.service';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TableModule} from 'primeng/table';
 
 @Component({
   selector: 'app-patients-view',
   standalone: true,
   templateUrl: './patients-view.component.html',
+  imports: [
+    TableModule
+  ],
   styleUrl: './patients-view.component.scss'
 })
 

@@ -1,0 +1,23 @@
+$primaryColor: #009360;
+$primaryDarkColor: #01704d !default;
+$primaryDarkerColor: #047857 !default;
+$primaryTextColor: #ffffff !default;
+
+$highlightBg: #ecfdf5 !default;
+$highlightTextColor: $primaryDarkerColor !default;
+$highlightFocusBg: #d1fae5 !default;
+
+$borderRadius: 4px;
+
+//button
+$buttonPadding: 0.35rem  0.7rem !default;
+
+//table
+$tableHeaderCellPadding: 0.5rem 0.75rem;
+$tableBodyCellPadding: 0.5rem 0.75rem;
+
+@import './lib/primeng/themes/aura/aura-light/_variables';
+@import './lib/primeng/themes/aura/aura-light/green/_fonts';
+@import './lib/primeng/theme-base/_components';
+@import './lib/primeng/themes/aura/aura-light/extensions/_extensions';
+

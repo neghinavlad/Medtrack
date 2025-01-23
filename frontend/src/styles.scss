@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'assets/scss/breakpoints';
-@import 'assets/scss/utilities';
-@import 'assets/scss/variables';
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
+@use 'primeicons/primeicons.css';
+
+
+//@use 'assets/scss/breakpoints';
+//@use 'assets/scss/utilities2';
+//@use 'assets/scss/variables';
+@use 'assets/scss/fonts';
+
+body {
+  //color-scheme: light !important;
+  font-family: 'Inter', sans-serif;
+}
